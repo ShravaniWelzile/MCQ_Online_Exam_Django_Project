@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Curd</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+
+
+    body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#4a148c,#ec407a);
+    display:flex;
+    justify-content:flex-start;   /* ✅ move to left */
+    align-items:center;
+    padding:100px 460px;            /* space from left */
+}
+
+
+
+.container{
+    width:100%;
+    max-width:800px;   /* ✅ increased width */
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    overflow:hidden;
+    margin-left:20px;
+}
+
+
+
+    .header{
+        background:linear-gradient(135deg,#6d4ae8,#eae1ea);
+        color:#fff;
+        text-align:center;
+        padding:25px;
+    }
+
+    .header h2{
+        font-weight:600;
+        letter-spacing:1px;
+    }
+
+    .form-box{
+        padding:30px;
+    }
+
+    .form-group{
+        margin-bottom:18px;
+    }
+
+    .form-group label{
+        display:block;
+        font-size:14px;
+        margin-bottom:6px;
+        color:#333;
+        font-weight:500;
+    }
+
+    .form-group input,
+    .form-group select{
+        width:100%;
+        padding:10px 12px;
+        border-radius:8px;
+        border:1px solid #ccc;
+        font-size:14px;
+        outline:none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus{
+        border-color:#ec407a;
+    }
+
+    .btn{
+        width:100%;
+        padding:12px;
+        background:linear-gradient(135deg,#a9f4a9,#efeb6c);
+        border:none;
+        border-radius:10px;
+        color:#fff;
+        font-size:16px;
+        font-weight:600;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .btn:hover{
+        opacity:0.9;
+    }
+
+    .msg{
+        text-align:center;
+        margin-top:15px;
+        font-weight:600;
+        color:green;
+    }
+
+    @media(max-width:480px){
+        .header h2{
+            font-size:20px;
+        }
+    }
+</style>
+</head>
+
+<body style="background-image: url(https://t3.ftcdn.net/jpg/11/02/73/30/360_F_1102733023_gxNqjAZ7rsCLu4aU6rNJZKg3kcUPibHo.jpg); background-size: cover;">
+
+<div class="container">
+    <div class="header">
+        <h2>STUDENT CURD</h2>
+    </div>
+      <div>
+        <a href="/GetAdminHome/" style="
+        text-decoration: none; 
+        color: darkgrey;
+        background: rgba(255, 255, 255, 0.2); 
+        padding: 8px 20px; 
+        border-radius: 2px; 
+       
+        font-size: 14px; 
+        font-weight: 800; 
+        display: flex; 
+  
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+    " onmouseover="this.style.background='rgba(255, 255, 255, 0.4)'" 
+       onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+        <span style="margin-right: 3px;">←</span> Back to Admin Dashboard
+    </a>
+</div> 
+
+    <div class="form-box">
+        <form >
+
+            <div class="form-group">
+                <label>Student ID</label>
+                <input value="{{student.sid}}" type="number" name="sid" placeholder="Student ID" >
+            </div>
+
+            <div class="form-group">
+                <label>Student Name</label>
+                <input  value="{{student.sname}}" type="text" name="sname" placeholder="Student Name" >
+            </div>
+
+             <div class="form-group">
+                <label>Password</label>
+                <input value="{{student.password}}" type="text" name="password" placeholder="Password" >
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input  value="{{student.semail}}" type="email" name="semail" placeholder=" Email" >
+            </div>
+
+            <div class="form-group">
+                <label>Mobile No</label>
+                <input value="{{student.smob_no}}" type="tel" name="smob_no" placeholder=" Mobile Number" >
+            </div>
+
+            
+
+
+            <button type="submit" formaction="/add_curd/" class="btn">Add Student</button>&nbsp;
+
+            <button type="submit" formaction="/delete_curd/" class="btn">Delete Student</button>
+                &nbsp;
+            <button type="submit" formaction="/update_curd" class="btn">Update Student</button>
+                &nbsp;
+            <button type="submit" formaction="/show_curd" class="btn">Show Student</button>
+            
+            <span style="color: red;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 40px;
+    display: block;">{{msg}}</span>
+
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

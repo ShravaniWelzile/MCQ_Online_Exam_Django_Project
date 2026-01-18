@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPink | Online Examination Portal</title>
+    <style>
+        /* CSS VARIABLES FOR PINK THEME */
+        :root {
+            --primary-pink: #ff6b9d;
+            --secondary-pink: #ff85a2;
+            --soft-pink: #fff0f5;
+            --deep-purple: #4a148c;
+            --text-color: #555;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #ff6b9d 0%, #ee0979 100%);
+        }
+
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth; /* This makes the jumping into scrolling */
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-pink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-purple);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        .btn-login {
+            background: var(--gradient);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            display: inline-block;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 80px 0;
+            background: radial-gradient(circle at top right, var(--soft-pink), transparent);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-text { flex: 1; min-width: 300px; }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--deep-purple);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-image { flex: 1; min-width: 300px; text-align: center; }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* GENERAL SECTION STYLING */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: var(--deep-purple);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* COURSES GRID */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .course-card:hover {
+            border-color: var(--primary-pink);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255,107,157,0.1);
+        }
+
+        .course-card h3 { color: var(--deep-purple); margin-bottom: 15px; }
+
+        /* EXAMS SECTION (Glassmorphism Table) */
+        .exam-table-container {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th { color: var(--primary-pink); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* ABOUT SECTION */
+        #about { background-color: var(--soft-pink); border-radius: 50px 0 50px 0; }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .about-content { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">EduPink</a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#exams">Exams</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="/GiveMeLoginPage/" class="btn-login">Sign In</a>
+                    <a href="/GetAdminLogin/" class="btn-login" style="background: var(--deep-purple);">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-row">
+                <div class="hero-text">
+                    <h1>Online Testing <br><span style="color: var(--primary-pink);">Simplified.</span></h1>
+                    <p>Join thousands of students achieving their goals through our interactive examination portal.</p>
+                    <a href="/GiveMeRegisterPage/" class="btn-login" style="padding: 15px 40px;">Get Started Today</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://img.freepik.com/premium-vector/female-student-passing-online-test-checking-answers-flat-vector-illustration_128772-860.jpg" alt="Hero">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Popular Courses</h2>
+                <p>Preparation materials for various technical domains.</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div style="font-size: 40px;">🐍</div>
+                    <h3>Python Dev</h3>
+                    <p>From basics to Django Framework. 40+ Lessons included.</p>
+                </div>
+                <div class="course-card">
+                    <div style="font-size: 40px;">☕</div>
+                    <h3>Java Core</h3>
+                    <p>Master OOPS, Collections and Multi-threading with ease.</p>
+                </div>
+                <div class="course-card">
+                    <div style="font-size: 40px;">🎨</div>
+                    <h3>Web Design</h3>
+                    <p>Learn HTML5, CSS3, and Responsive UI development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="exams" style="background: #fafafa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Live Exams</h2>
+                <p>Check the schedule for upcoming assessment tests.</p>
+            </div>
+            <div class="exam-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Python Basics</td>
+                            <td>Jan 20, 2026</td>
+                            <td>30 Mins</td>
+                            <td style="color: green; font-weight: 600;">Open</td>
+                        </tr>
+                        <tr>
+                            <td>Java Advanced</td>
+                            <td>Jan 22, 2026</td>
+                            <td>45 Mins</td>
+                            <td style="color: orange; font-weight: 600;">Upcoming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="color: var(--deep-purple); font-size: 2.5rem; margin-bottom: 20px;">Why EduPink?</h2>
+                    <p>EduPink is a next-generation examination platform designed to provide students with a seamless and fair testing experience. We bridge the gap between learning and assessment through cutting-edge technology.</p>
+                    <br>
+                    <p>Our platform provides real-time results, anti-cheat mechanisms, and detailed performance analytics to help you grow your career.</p>
+                </div>
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <img src="https://img.freepik.com/free-vector/about-us-concept-illustration_114360-639.jpg" style="max-width: 80%; border-radius: 20px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 50px 0; text-align: center; background: #fff;">
+        <p style="color: #999;">&copy; 2026 EduPink Learning. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

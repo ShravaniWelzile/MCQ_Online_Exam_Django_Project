@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show All Students</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#4a148c,#ec407a);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 15px;
+}
+
+.container{
+    width:100%;
+    max-width:1000px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    overflow:hidden;
+}
+
+.header{
+    background:linear-gradient(135deg,#6d4ae8,#eae1ea);
+    color:#fff;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.table-box{
+    padding:25px;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#f3f3f3;
+}
+
+th, td{
+    padding:12px 14px;
+    text-align:left;
+    font-size:14px;
+}
+
+th{
+    color:#333;
+    font-weight:600;
+}
+
+tr{
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#fafafa;
+}
+
+.no-data{
+    text-align:center;
+    font-weight:600;
+    color:red;
+    padding:20px;
+}
+
+/* Responsive Table */
+@media(max-width:768px){
+    table, thead, tbody, th, td, tr{
+        display:block;
+        width:100%;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tr{
+        margin-bottom:15px;
+        border:1px solid #ddd;
+        border-radius:10px;
+        padding:10px;
+    }
+
+    td{
+        display:flex;
+        justify-content:space-between;
+        padding:10px;
+        font-size:13px;
+    }
+
+    td::before{
+        content:attr(data-label);
+        font-weight:600;
+        color:#555;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>SHOW ALL STUDENTS</h2>
+    </div>
+      <div>
+        <a href="/GetAdminHome/" style="
+        text-decoration: none; 
+        color: darkgrey;
+        background: rgba(255, 255, 255, 0.2); 
+        padding: 8px 20px; 
+        border-radius: 2px; 
+       
+        font-size: 14px; 
+        font-weight: 800; 
+        display: flex; 
+  
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+    " onmouseover="this.style.background='rgba(255, 255, 255, 0.4)'" 
+       onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+        <span style="margin-right: 3px;">←</span> Back to Admin Dashboard
+    </a>
+</div> 
+
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for s in student %}
+                <tr>
+                    <td data-label="Student ID">{{ s.sid }}</td>
+                    <td data-label="Name">{{ s.sname }}</td>
+                    <td data-label="Email">{{ s.semail }}</td>
+                    <td data-label="Mobile">{{ s.smob_no }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="no-data">No Students Found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
